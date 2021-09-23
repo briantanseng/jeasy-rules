@@ -1,4 +1,4 @@
-# jeasy-rules
+# jeasy-rules-demo
 
 ## Build and Run
 ```
