@@ -24,7 +24,6 @@ public class App {
         App app = new App();
         app.runRuleEngineDemo();
 
-
     }
 
     private void runRuleEngineDemo() throws Exception {
@@ -32,7 +31,7 @@ public class App {
 
         //create a person instance (fact)
         Shop shop = new Shop();
-        Person tom = new Person("Tom", 15);
+        Person tom = new Person("Tom", 10);
         tom.setAdult(tom.getAge() >= Person.ADULT_AGE);
 
         Facts facts = new Facts();
@@ -68,8 +67,8 @@ public class App {
         sb.append("name: \"alcohol rule\"").append("\n");
         sb.append("description: \"children are not allowed to buy alcohol\"").append("\n");
         sb.append("priority: 2").append("\n");
-        //sb.append("condition: \"person.age >= 18\"").append("\n");
-        sb.append("condition: \"person.isAdult() == false\"").append("\n");
+        sb.append("condition: \"person.age < 18\"").append("\n");
+        //sb.append("condition: \"person.isAdult() == false\"").append("\n");
         sb.append("actions:").append("\n");
         sb.append("  - \"person.setResult(\\\"Not able to buy vodka.\\\")\"").append("\n");
         sb.append("  - \"shop.declinePurchaseMessage(person.getName())\"").append("\n");
