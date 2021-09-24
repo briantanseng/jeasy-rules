@@ -8,6 +8,10 @@ import org.jeasy.rules.core.DefaultRulesEngine;
 import org.jeasy.rules.mvel.MVELRuleFactory;
 import org.jeasy.rules.support.reader.YamlRuleDefinitionReader;
 
+/**
+ * MVEL Demo
+ * Refer to <a href="https://en.wikibooks.org/wiki/Transwiki:MVEL_Language_Guide">MVEL Language Guide</a>
+ */
 public class MvelDemo {
 
     MVELRuleFactory ruleFactory = new MVELRuleFactory(new YamlRuleDefinitionReader());
