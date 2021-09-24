@@ -10,7 +10,7 @@ import org.jeasy.rules.support.reader.YamlRuleDefinitionReader;
 
 /**
  * MVEL Demo
- * Refer to <a href="https://en.wikibooks.org/wiki/Transwiki:MVEL_Language_Guide">MVEL Language Guide</a>
+ * @see <a href="https://en.wikibooks.org/wiki/Transwiki:MVEL_Language_Guide" target="_top">MVEL Language Guide</a>
  */
 public class MvelDemo {
 
@@ -22,7 +22,7 @@ public class MvelDemo {
 
         //create a person instance (fact)
         Shop shop = new Shop();
-        Person tom = new Person("Tom", 20);
+        Person tom = new Person("Tom", 10);
 
         System.out.println("Tom's age is "+tom.getAge());
 
@@ -53,7 +53,7 @@ public class MvelDemo {
     private String getAgeRuleDefinition() {
         StringBuilder sb = new StringBuilder();
         sb.append("name: \"age rule\"").append("\n");
-        sb.append("description: \"Check if person's age is > 18 and mark the person as adult\"").append("\n");
+        sb.append("description: \"Check if person's age is >= 18 and mark the person as adult\"").append("\n");
         sb.append("priority: 1").append("\n");
         sb.append("condition: \"person.age >= 18\"").append("\n");
         sb.append("actions:").append("\n");

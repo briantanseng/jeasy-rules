@@ -20,14 +20,8 @@ import java.nio.charset.StandardCharsets;
 public class App {
 
     public static void main(String[] args) throws Exception {
-
-        new MvelDemo().runDemo();
+        //new MvelDemo().runDemo();
         new JexlDemo().runDemo();
-
     }
-
-
-
-
 
 }
