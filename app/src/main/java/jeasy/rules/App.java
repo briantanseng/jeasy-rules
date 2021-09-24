@@ -21,57 +21,13 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        App app = new App();
-        app.runRuleEngineDemo();
+        new MvelDemo().runDemo();
+        new JexlDemo().runDemo();
 
     }
 
-    private void runRuleEngineDemo() throws Exception {
-        System.out.println("~~~ Basic rule engine demo ~~~");
 
-        //create a person instance (fact)
-        Shop shop = new Shop();
-        Person tom = new Person("Tom", 10);
-        tom.setAdult(tom.getAge() >= Person.ADULT_AGE);
 
-        Facts facts = new Facts();
-        facts.put("person", tom);
-        facts.put("shop", shop);
 
-        MVELRuleFactory ruleFactory = new MVELRuleFactory(new YamlRuleDefinitionReader());
-        String alcoholRuleDefinition = getAlcoholRuleDefinition();
-        System.out.println("\n"+alcoholRuleDefinition);
 
-        Rule alcoholRule = ruleFactory.createRule(getReader(alcoholRuleDefinition));
-
-        // create a rule set
-        Rules rules = new Rules();
-        rules.register(alcoholRule);
-
-        //create a default rules engine and fire rules on known facts
-        RulesEngine rulesEngine = new DefaultRulesEngine();
-
-        System.out.println("Tom: Hi! can I have some Vodka please?");
-        rulesEngine.fire(rules, facts);
-
-        System.out.println("Tom's result = "+tom.getResult());
-    }
-
-    public static Reader getReader(String string) {
-        InputStream is = new ByteArrayInputStream( string.getBytes(StandardCharsets.UTF_8) );
-        return new InputStreamReader(is);
-    }
-
-    private String getAlcoholRuleDefinition() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("name: \"alcohol rule\"").append("\n");
-        sb.append("description: \"children are not allowed to buy alcohol\"").append("\n");
-        sb.append("priority: 2").append("\n");
-        sb.append("condition: \"person.age < 18\"").append("\n");
-        //sb.append("condition: \"person.isAdult() == false\"").append("\n");
-        sb.append("actions:").append("\n");
-        sb.append("  - \"person.setResult(\\\"Not able to buy vodka.\\\")\"").append("\n");
-        sb.append("  - \"shop.declinePurchaseMessage(person.getName())\"").append("\n");
-        return sb.toString();
-    }
 }

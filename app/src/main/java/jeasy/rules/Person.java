@@ -8,15 +8,15 @@ public class Person {
     private int age;
     private boolean isAdult;
 
-    public String getResult() {
-        return result;
+    public String getAlcoholEligibility() {
+        return alcoholEligibility;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setAlcoholEligibility(String alcoholEligibility) {
+        this.alcoholEligibility = alcoholEligibility;
     }
 
-    private String result;
+    private String alcoholEligibility;
 
     public Person(String name, int age) {
         this.name = name;
