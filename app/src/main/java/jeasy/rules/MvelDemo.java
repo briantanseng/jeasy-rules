@@ -18,7 +18,7 @@ public class MvelDemo {
 
         //create a person instance (fact)
         Shop shop = new Shop();
-        Person tom = new Person("Tom", 10);
+        Person tom = new Person("Tom", 20);
 
         System.out.println("Tom's age is "+tom.getAge());
 
@@ -37,7 +37,7 @@ public class MvelDemo {
         System.out.println("Tom: Hi! can I have some Vodka please?");
         rulesEngine.fire(rules, facts);
 
-        System.out.println("Tom's eligibility = "+tom.getAlcoholEligibility());
+        System.out.println("Result: "+tom.getAlcoholEligibility());
     }
 
     private Rule getAgeRule() throws Exception {
@@ -54,7 +54,8 @@ public class MvelDemo {
         sb.append("condition: \"person.age >= 18\"").append("\n");
         sb.append("actions:").append("\n");
         sb.append("  - \"person.setAdult(true);\"").append("\n");
-        sb.append("  - \"person.setAlcoholEligibility(\\\"Rock en roll! You can buy alcohol!\\\");\"").append("\n");
+        sb.append("  - \"person.setAlcoholEligibility(\\\"Rock en roll! \\\" + person.getName() + \\\" can buy alcohol.\\\");\"").append("\n");
+        sb.append("  - \"shop.acceptPurchaseMessage(person.getName())\"").append("\n");
         return sb.toString();
     }
 
@@ -71,8 +72,8 @@ public class MvelDemo {
         sb.append("priority: 2").append("\n");
         sb.append("condition: \"person.isAdult() == false\"").append("\n");
         sb.append("actions:").append("\n");
-        sb.append("  - \"person.setAlcoholEligibility(\\\"Not allowed to buy alcohol.\\\");\"").append("\n");
         sb.append("  - \"shop.declinePurchaseMessage(person.getName())\"").append("\n");
+        sb.append("  - \"person.setAlcoholEligibility(person.getName() + \\\" is not allowed to buy alcohol.\\\");\"").append("\n");
         return sb.toString();
     }
 }
