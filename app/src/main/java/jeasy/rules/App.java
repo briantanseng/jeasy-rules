@@ -3,25 +3,12 @@
  */
 package jeasy.rules;
 
-import org.jeasy.rules.api.Facts;
-import org.jeasy.rules.api.Rule;
-import org.jeasy.rules.api.Rules;
-import org.jeasy.rules.api.RulesEngine;
-import org.jeasy.rules.core.DefaultRulesEngine;
-import org.jeasy.rules.mvel.MVELRuleFactory;
-import org.jeasy.rules.support.reader.YamlRuleDefinitionReader;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
-
 public class App {
 
     public static void main(String[] args) throws Exception {
-        //new MvelDemo().runDemo();
-        new JexlDemo().runDemo();
+//        new MvelDemo().runDemo();
+//        new JexlDemo().runDemo();
+        new DynamicDemo().runDemo();
     }
 
 }
