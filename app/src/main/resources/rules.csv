@@ -1,0 +1,4 @@
+priority,name,description,condition,actions
+0, "CNP Rule", "Client Not Present", "input.kyc.clientNotPresent.referenceCode == \"CNP_REP\" || input.kyc.clientNotPresent.referenceCode == \"CNP_ACHOL\"", "output.cnp = true;"
+0, "DAUD Rule", "Drawn Against Uncollected Debit", "input.transactionAmount > input.kyc.availableBalance && (input.kyc.holdFullBalanceIndicator == false)", "output.daud = true;"
+0, "DAIF Rule", "Drawn Against Insufficient Fund", "input.transactionAmount > input.kyc.availableBalance && (input.kyc.holdFullBalanceIndicator == true)", "output.daif = true;"
